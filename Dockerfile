@@ -6,13 +6,13 @@ COPY . /app
 
 WORKDIR /app
 
-RUN apk add --no-cache bash git nginx uwsgi uwsgi-python py2-pip \
-	&& pip2 install --upgrade pip \
-	&& pip2 install -r requirements.txt \
+RUN apk add --no-cache bash git nginx uwsgi uwsgi-python3 python3 \
+	&& pip3 install --upgrade pip \
+	&& pip3 install -r requirements.txt \
 	&& rm -rf /var/cache/apk/*
 
 EXPOSE 5000
 
-ENTRYPOINT ["python"]
+ENTRYPOINT ["python3"]
 
 CMD ["app.py"]
